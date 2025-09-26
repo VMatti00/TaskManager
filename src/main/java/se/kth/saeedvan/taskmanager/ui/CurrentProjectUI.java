@@ -1,10 +1,8 @@
-package ui;
+package se.kth.saeedvan.taskmanager.ui;
 
-import model.matcher.AllTasksmatcher;
-import model.matcher.ITaskMatcher;
-import model.matcher.NotDoneMatcher;
-import model.matcher.PrioMatcher;
-import model.*;
+
+
+import se.kth.saeedvan.taskmanager.model.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -77,7 +75,7 @@ class CurrentProjectUI {
         String descr = scan.nextLine();
         System.out.print("Priority (L)ow, (M)edium, (H)igh? ");
         char prioChar = InputUtils.scanAndReturnFirstChar(scan);
-        Prio prio = prioChar == 'H' ? Prio.High : prioChar == 'L' ? Prio.Low : Prio.Medium;
+        TaskPrio prio = prioChar == 'H' ? TaskPrio.HIGH : prioChar == 'L' ? TaskPrio.LOW : TaskPrio.MEDIUM;
         currentProject.addTask(descr, prio);
     }
 
