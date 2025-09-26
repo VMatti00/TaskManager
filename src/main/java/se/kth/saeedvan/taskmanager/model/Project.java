@@ -1,5 +1,4 @@
 package se.kth.saeedvan.taskmanager.model;
 
-public enum Prio {
-    Low, Medium, High
+public class Project {
 }

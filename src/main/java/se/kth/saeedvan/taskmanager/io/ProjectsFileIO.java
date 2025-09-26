@@ -1,6 +1,6 @@
-package io;
+package se.kth.saeedvan.taskmanager.io;
 
-import model.Project;
+import se.kth.saeedvan.taskmanager.model.Project;
 
 import java.io.*;
 import java.util.List;

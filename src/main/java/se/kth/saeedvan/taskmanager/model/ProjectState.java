@@ -1,4 +1,4 @@
-package model;
+package se.kth.saeedvan.taskmanager.model;
 
 public enum ProjectState {
     EMPTY("Empty"), ONGOING("Ongoing"), COMPLETED("Completed");

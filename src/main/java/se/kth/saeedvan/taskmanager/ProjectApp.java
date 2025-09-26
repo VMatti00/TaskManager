@@ -1,6 +1,6 @@
-import io.ProjectsFileIO;
-import model.Project;
-import model.ProjectsManager;
+import se.kth.saeedvan.taskmanager.io.ProjectsFileIO;
+import se.kth.saeedvan.taskmanager.model.Project;
+import se.kth.saeedvan.taskmanager.model.ProjectsManager;
 import ui.MainUI;
 
 import java.io.File;
