@@ -17,7 +17,8 @@ public class Project implements Comparable<Project>, Serializable {
         this.title = title;
         this.description = description;
         this.id = id;
-        created = LocalDate.now();
+        this.created = LocalDate.now();
+        this.nextTaskId = 1;
     }
 
     public String getTitle() {
@@ -37,9 +38,9 @@ public class Project implements Comparable<Project>, Serializable {
     }
 
     public Task addTask(String description, TaskPrio prio){
-        this.nextTaskId++;
         Task newTask = new Task(description, prio, this.nextTaskId);
         tasks.add(newTask);
+        this.nextTaskId++;
         return newTask;
     }
 
