@@ -3,10 +3,10 @@ package se.kth.saeedvan.taskmanager.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectManager {
+public class ProjectsManager {
     private List<Project> projects;
     private int nextProjectId;
-    public ProjectManager() {
+    public ProjectsManager() {
         projects = new ArrayList<>();
         this.nextProjectId = 1;
     }
@@ -17,6 +17,15 @@ public class ProjectManager {
             this.nextProjectId = p.getId();
             addProject(p.getTitle(), p.getDescription());
         }
+        for (int i = 0; i < projects.size(); i++) {
+            for (Task t : incomingProjects.get(i).getTasks()) {
+                Task createdTask = projects.get(i).addTask(t.getDescription(), t.getPrio());
+                createdTask.setTakenBy(t.getTakenBy());
+                createdTask.setPrio(t.getPrio());
+                createdTask.setState(t.getState());
+            }
+        }
+
     }
 
     public boolean isTitleUnique(String title) {
@@ -76,8 +85,8 @@ public class ProjectManager {
         return nextProjectId;
     }
 
-    @Override
-    public String toString() {
-        return "ProjectManager [projects=" + projects + ", nextProjectId=" + nextProjectId + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "ProjectManager [projects=" + projects + ", nextProjectId=" + nextProjectId + "]";
+//    }
 }

@@ -15,13 +15,14 @@ public class Task implements Comparable<Task>, Serializable {
         this.description = description;
         this.prio = prio;
         this.id = id;
+        this.takenBy = null;
     }
 
-    public void setTakenBy(String takeBy) {
-        if(takenBy != null)
+    public void setTakenBy(String takenBy) throws IllegalStateException {
+        if(this.takenBy != null)
             throw new IllegalStateException("Already taken!!");
 
-        this.takenBy = takeBy;
+        this.takenBy = takenBy;
         this.lastUpdate = LocalDate.now();
     }
     public void setState(TaskState state) {
@@ -80,13 +81,16 @@ public class Task implements Comparable<Task>, Serializable {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "description='" + description + '\'' +
-                ", id=" + id +
-                ", takenBy='" + takenBy + '\'' +
-                ", state=" + state +
-                ", lastUpdate=" + lastUpdate +
-                ", prio=" + prio +
-                '}';
+        return  "-----------------------\n" +
+                "|       TASK          |\n" +
+                "-----------------------\n" +
+                " description: " + description + "\n" +
+                " id: " + id + "\n" +
+                " taken by: " + takenBy + "\n" +
+                " state: " + state + "\n" +
+                " prio: " + prio + "\n" +
+                " last update: " + lastUpdate + "\n" +
+                "-----------------------\n";
     }
+
 }

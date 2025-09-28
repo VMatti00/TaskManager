@@ -1,4 +1,4 @@
-package ui;
+package se.kth.saeedvan.taskmanager.ui;
 
 import java.util.Scanner;
 

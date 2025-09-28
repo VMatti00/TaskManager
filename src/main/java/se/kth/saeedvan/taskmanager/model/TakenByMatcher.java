@@ -8,7 +8,5 @@ public class TakenByMatcher implements ITaskMatcher{
     public TakenByMatcher(String takenBy) {
         this.takenBy = takenBy;
     }
-    public boolean match(Task task) {
-        return this.takenBy.equals(task.getTakenBy());
-    }
+    public boolean match(Task task) { return this.takenBy.equalsIgnoreCase(task.getTakenBy()); }
 }

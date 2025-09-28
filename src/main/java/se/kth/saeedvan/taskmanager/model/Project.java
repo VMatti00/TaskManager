@@ -114,15 +114,26 @@ public class Project implements Comparable<Project>, Serializable {
         return false;
     }
 
+    public List<Task> getTasks() {
+        return List.copyOf(this.tasks);
+    }
+
     @Override
     public String toString() {
-        return "Project{" +
-                "tasks=" + tasks +
-                ", title='" + title + '\'' +
-                ", id=" + id +
-                ", description='" + description + '\'' +
-                ", created=" + created +
-                ", nextTaskId=" + nextTaskId +
-                '}';
+        StringBuilder builder = new StringBuilder();
+        String str = "*Project:  | description:  | id:  | created: *" + "0000-00-00";
+        int strSize = title.length() + description.length() + Integer.toString(id).length() + str.length();
+        builder.append("\n");
+        for (int i = 0; i < strSize; i++) {
+            builder.append('*');
+        }
+        builder.append ("\n*Project: " + title + " | " + "description: " + description + " | " + "id: " + id + " | " +
+                "created: " + created + "*\n");
+        builder.append("*".repeat(Math.max(0, strSize)));
+        builder.append("\n");
+        for (Task t : tasks) {
+            builder.append(t.toString()).append("\n");
+        }
+        return builder.toString();
     }
 }

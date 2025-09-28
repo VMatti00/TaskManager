@@ -1,7 +1,6 @@
-package ui;
+package se.kth.saeedvan.taskmanager.ui;
 
-import model.Project;
-import model.ProjectsManager;
+import se.kth.saeedvan.taskmanager.model.*;
 
 import java.util.List;
 import java.util.Scanner;

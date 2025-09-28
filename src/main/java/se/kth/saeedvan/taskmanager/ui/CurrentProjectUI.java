@@ -38,6 +38,9 @@ class CurrentProjectUI {
             choice = InputUtils.scanAndReturnFirstChar(scan);
 
             switch (choice) {
+                case 'V':
+                    System.out.println(currentProject.toString());
+                    break;
                 case 'T':
                     System.out.print("Name? ");
                     String takenBy = scan.nextLine();
@@ -47,13 +50,19 @@ class CurrentProjectUI {
                     viewTasks(new NotDoneMatcher());
                     break;
                 case 'H':
-                    viewTasks(new PrioMatcher(Prio.High));
+                    viewTasks(new PrioMatcher(TaskPrio.HIGH));
+                    break;
+                case 'L':
+                    viewTasks(new PrioMatcher(TaskPrio.LOW));
                     break;
                 case 'A':
                     addTask();
                     break;
                 case 'U':
                     updateTask();
+                    break;
+                case 'R':
+                    removeTask();
                     break;
                 case 'X':
                     break;
@@ -65,7 +74,7 @@ class CurrentProjectUI {
     }
 
     private void viewTasks(ITaskMatcher matcher) {
-        System.out.println(currentProject.toString());
+        //System.out.println(currentProject.toString());
         List<Task> tasks = currentProject.findTasks(matcher);
         printTasks(tasks);
     }
@@ -75,8 +84,22 @@ class CurrentProjectUI {
         String descr = scan.nextLine();
         System.out.print("Priority (L)ow, (M)edium, (H)igh? ");
         char prioChar = InputUtils.scanAndReturnFirstChar(scan);
-        TaskPrio prio = prioChar == 'H' ? TaskPrio.HIGH : prioChar == 'L' ? TaskPrio.LOW : TaskPrio.MEDIUM;
+        TaskPrio prio = prioChar == 'H' ? TaskPrio.HIGH : prioChar == 'M' ? TaskPrio.MEDIUM : TaskPrio.LOW;
         currentProject.addTask(descr, prio);
+    }
+
+    private void removeTask() {
+        System.out.println("Task id?");
+        String input = scan.nextLine();
+        int id = Integer.parseInt(input);
+        Task task = currentProject.getTaskById(id);
+        if (task != null) {
+            System.out.println("Removing...\n" + task.toString());
+            currentProject.removeTask(task);
+        }
+        else {
+            System.out.println("Id not found.");
+        }
     }
 
     private void updateTask() {
@@ -86,16 +109,27 @@ class CurrentProjectUI {
         Task task = currentProject.getTaskById(id);
         if (task != null) {
             System.out.println(task);
-            System.out.print("New state (T)odo (D)one? ");
+            System.out.print("New state (T)odo (P)In progress (D)one? ");
             char stateChar = InputUtils.scanAndReturnFirstChar(scan);
             if (stateChar == 'T') {
                 System.out.print("Taken by (name or email address)? ");
                 String emailStr = scan.nextLine();
                 task.setState(TaskState.TO_DO);
-                task.setTakenBy(emailStr);
+                try {
+                    task.setTakenBy(emailStr);
+                }
+                catch(IllegalStateException e) {
+                    System.out.println("Task already taken !!!");
+                }
+            }
+            else if (stateChar == ('P')) {
+                task.setState(TaskState.IN_PROGRESS);
             }
             else if(stateChar == ('D')) {
                 task.setState(TaskState.DONE);
+            }
+            else {
+                System.out.println("Unknown command");
             }
         } else {
             System.out.println("Id not found.");
@@ -104,13 +138,16 @@ class CurrentProjectUI {
 
     private void printCurrentProjectMenu() {
         System.out.println("--- Manage " + currentProject.getTitle() + " ---");
+        System.out.println("V - list all tasks");
         System.out.println("T - list tasks taken by ...");
         System.out.println("N - list tasks not done");
         System.out.println("H - list high priority tasks");
+        System.out.println("L - list low priority tasks");
         System.out.println("A - add task");
         System.out.println("U - update task");
+        System.out.println("R - remove task");
         System.out.println("X - exit project menu");
-        System.out.println("----------");
+        System.out.println("---------------------");
     }
 
     private void printTasks(List<Task> tasks) {

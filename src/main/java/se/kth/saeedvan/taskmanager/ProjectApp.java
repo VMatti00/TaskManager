@@ -1,11 +1,19 @@
+package se.kth.saeedvan.taskmanager;
+
 import se.kth.saeedvan.taskmanager.io.ProjectsFileIO;
 import se.kth.saeedvan.taskmanager.model.Project;
 import se.kth.saeedvan.taskmanager.model.ProjectsManager;
-import ui.MainUI;
+import se.kth.saeedvan.taskmanager.ui.MainUI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
+
+/*
+Placera modellklasserna, ProjectManager, Project etc. i ett eget paket med namnet ”model”. I detta
+projekt lägger ni underpaket för era egna exceptionklasser respektive för era matchfamers.
+Klasserna för användargränssnittet läggs i ett paket med namnet ”ui”.
+ */
 
 public class ProjectApp {
 
