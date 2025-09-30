@@ -9,12 +9,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-/*
-Placera modellklasserna, ProjectManager, Project etc. i ett eget paket med namnet ”model”. I detta
-projekt lägger ni underpaket för era egna exceptionklasser respektive för era matchfamers.
-Klasserna för användargränssnittet läggs i ett paket med namnet ”ui”.
- */
-
 public class ProjectApp {
 
     private static final String FILE_NAME = "projects.ser";

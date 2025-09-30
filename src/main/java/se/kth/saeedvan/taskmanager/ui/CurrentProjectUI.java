@@ -3,6 +3,10 @@ package se.kth.saeedvan.taskmanager.ui;
 
 
 import se.kth.saeedvan.taskmanager.model.*;
+import se.kth.saeedvan.taskmanager.model.matcher.ITaskMatcher;
+import se.kth.saeedvan.taskmanager.model.matcher.NotDoneMatcher;
+import se.kth.saeedvan.taskmanager.model.matcher.PrioMatcher;
+import se.kth.saeedvan.taskmanager.model.matcher.TakenByMatcher;
 
 import java.util.List;
 import java.util.Scanner;

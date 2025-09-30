@@ -1,6 +1,6 @@
-package se.kth.saeedvan.taskmanager.model;
+package se.kth.saeedvan.taskmanager.model.matcher;
 
-import java.util.Objects;
+import se.kth.saeedvan.taskmanager.model.Task;
 
 public class TakenByMatcher implements ITaskMatcher{
     private String takenBy;
