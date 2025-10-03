@@ -2,6 +2,7 @@ package se.kth.saeedvan.taskmanager.model;
 
 import se.kth.saeedvan.taskmanager.model.exceptions.TitleNotUniqueException;
 
+import java.nio.MappedByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,8 +148,12 @@ public class ProjectsManager {
         return nextProjectId;
     }
 
-//    @Override
-//    public String toString() {
-//        return "ProjectManager [projects=" + projects + ", nextProjectId=" + nextProjectId + "]";
-//    }
+   @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (Project p : projects) {
+            builder.append(p.toString()).append("\n");
+        }
+        return builder.toString();
+    }
 }

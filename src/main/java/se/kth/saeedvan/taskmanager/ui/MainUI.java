@@ -30,6 +30,9 @@ public class MainUI {
             choice = InputUtils.scanAndReturnFirstChar(scan);
 
             switch (choice) {
+                case 'V':
+                    System.out.println(manager.toString());
+                    break;
                 case 'F':
                     findProjects();
                     break;
@@ -39,6 +42,8 @@ public class MainUI {
                 case 'M':
                     manageProject();
                     break;
+                case 'R':
+                    removeProject();
                 case 'X':
                     break;
                 default:
@@ -88,11 +93,28 @@ public class MainUI {
         }
     }
 
+    private void removeProject() {
+        System.out.println("Project id? ");
+        int id = scan.nextInt();
+        scan.nextLine();
+        Project projectToRemove = manager.getProjectById(id);
+        if (projectToRemove != null) {
+        System.out.println("Removing project ...");
+        System.out.println(projectToRemove.toString());
+        manager.removeProject(projectToRemove);
+        }
+        else {
+            System.out.println("Project not found");
+        }
+    }
+
     private void printMainMenu() {
         System.out.println("---Main menu---");
+        System.out.println("V - view all projects");
         System.out.println("F - find project");
         System.out.println("A - add project");
         System.out.println("M - manage project");
+        System.out.println("R - remove project");
         System.out.println("X - exit");
         System.out.println("----------");
     }

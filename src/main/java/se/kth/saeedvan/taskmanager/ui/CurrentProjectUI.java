@@ -43,7 +43,7 @@ class CurrentProjectUI {
 
             switch (choice) {
                 case 'V':
-                    System.out.println(currentProject.toString());
+                    printTasks(currentProject.getTasks());
                     break;
                 case 'T':
                     System.out.print("Name? ");
@@ -127,10 +127,18 @@ class CurrentProjectUI {
                 }
             }
             else if (stateChar == ('P')) {
-                task.setState(TaskState.IN_PROGRESS);
+                if (task.getTakenBy() == null) {
+                    System.out.println("Task needs to taken first");
+                }
+                else
+                    task.setState(TaskState.IN_PROGRESS);
             }
             else if(stateChar == ('D')) {
-                task.setState(TaskState.DONE);
+                if (task.getState() != TaskState.IN_PROGRESS) {
+                    System.out.println("Task needs to be in progress first");
+                }
+                else
+                    task.setState(TaskState.DONE);
             }
             else {
                 System.out.println("Unknown command");
