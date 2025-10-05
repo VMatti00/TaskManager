@@ -1,0 +1,7 @@
+module:se.kth.saeedvan.taskmanager
+se.kth.saeedvan.taskmanager
+se.kth.saeedvan.taskmanager.io
+se.kth.saeedvan.taskmanager.model
+se.kth.saeedvan.taskmanager.model.exceptions
+se.kth.saeedvan.taskmanager.model.matcher
+se.kth.saeedvan.taskmanager.ui

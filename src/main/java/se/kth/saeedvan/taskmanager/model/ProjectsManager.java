@@ -123,7 +123,7 @@ public class ProjectsManager {
      *
      * @return the highest project id
      */
-    public int getHighestId() {
+    private int getHighestId() {
         int highest = 0;
         for (Project p : projects) {
             if (p.getId() > highest)
